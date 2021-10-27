@@ -1,0 +1,78 @@
+<ActionBar class="action-bar" title="Interactions"></ActionBar>
+
+<DockLayout stretchLastChild="true">
+  <FlexboxLayout class="border-bottom-shadow" dock="top" flexDirection="column" padding="10 8">
+    <Label class="primary-heading"
+           text="{{herbSupplementFood}}"></Label>
+    <StackLayout padding="5 0 5 0">
+      <Label class="primary-subheading" text="Legends"
+             textWrap="true"></Label>
+    </StackLayout>
+    <GridLayout columns="*, *, *" rows="auto, auto">
+      <StackLayout class="bgRed-legend" col="0" colSpan="2" margin="0 4 4 0" row="0">
+        <Label text="Avoid Combination"></Label>
+      </StackLayout>
+      <StackLayout class="bgAmber-legend" col="2" margin="0 0 4 0" row="0">
+        <Label text="Caution"></Label>
+      </StackLayout>
+      <StackLayout class="bgBlue-legend" col="0" margin="0 4 0 0" row="1">
+        <Label text="Speculative"></Label>
+      </StackLayout>
+      <StackLayout class="bgGreen-legend" col="1" colSpan="2" margin="0 0 0 0" row="1">
+        <Label text="Potentially Beneficial"></Label>
+      </StackLayout>
+    </GridLayout>
+  </FlexboxLayout>
+  <FlexboxLayout dock="bottom" flexDirection="column">
+    <GridLayout columns="*, *" rows="auto">
+      <StackLayout col="0" padding="0 15 10 15" row="0">
+        <Button class="nav-button" nsRouterLink="/" text="Home"></Button>
+      </StackLayout>
+      <StackLayout col="1" padding="0 15 10 15" row="0">
+        <Button class="nav-button" nsRouterLink="/search" text="Search"></Button>
+      </StackLayout>
+    </GridLayout>
+  </FlexboxLayout>
+  <FlexboxLayout class="results-flexbox" flexDirection="column">
+    <ScrollView *ngIf="ingredientNameResponse && ingredientNameResponse.data.length > 0; else noResult"
+                orientation="vertical">
+      <FlexboxLayout flexDirection="column" padding="5 0">
+        <StackLayout padding="7 0 5 0">
+          <Label class="primary-subheading" text="This herb may interact with below listed results."
+                 textWrap="true"></Label>
+        </StackLayout>
+        <StackLayout (tap)="onTapInteraction(
+                     {
+                            interactionID: interaction.generalInteractionID,
+                            herb: herbSupplementFood,
+                            drugName: interaction.drugName || '',
+                            drugClass: interaction.catName || ''
+                          })"
+                     *ngFor="let interaction of ingredientNameResponse.data"
+                     [ngClass]="{'result-card': true, 'bgRed': interaction.recommendation.toLowerCase().includes('red'),
+                                        'bgAmber': interaction.recommendation.toLowerCase().includes('amber'),
+                                        'bgBlue': interaction.recommendation.toLowerCase().includes('blue'),
+                                        'bgGreen': interaction.recommendation.toLowerCase().includes('green')
+                                        }">
+          <Label *ngIf="interaction.drugName" textWrap="true">
+            <FormattedString>
+              <Span fontWeight="bold" text="Drug: "></Span>
+              <Span fontWeight="bold" text="{{interaction.drugName}}"></Span>
+            </FormattedString>
+          </Label>
+          <Label *ngIf="interaction.catName" textWrap="true">
+            <FormattedString>
+              <Span fontWeight="bold" text="Drug Class: "></Span>
+              <Span fontWeight="bold" text="{{interaction.catName}}"></Span>
+            </FormattedString>
+          </Label>
+        </StackLayout>
+      </FlexboxLayout>
+    </ScrollView>
+    <ng-template #noResult>
+      <FlexboxLayout class="no-results-flexbox">
+        <Label class="primary-heading" text="No Interactions Found."></Label>
+      </FlexboxLayout>
+    </ng-template>
+  </FlexboxLayout>
+</DockLayout>

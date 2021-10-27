@@ -1,0 +1,76 @@
+<ActionBar class="action-bar" title="Interactions"></ActionBar>
+
+<DockLayout stretchLastChild="true">
+  <FlexboxLayout dock="bottom" flexDirection="column" paddingTop="10">
+    <GridLayout columns="*, *" rows="auto">
+      <StackLayout col="0" padding="0 15 10 15" row="0">
+        <Button class="nav-button" nsRouterLink="/" text="Home"></Button>
+      </StackLayout>
+      <StackLayout col="1" padding="0 15 10 15" row="0">
+        <Button (tap)="onTapChat()" class="nav-button" text="chat"></Button>
+      </StackLayout>
+    </GridLayout>
+  </FlexboxLayout>
+  <ScrollView class="page" orientation="vertical">
+    <FlexboxLayout class="interactions-root-flexbox" flexDirection="column">
+      <StackLayout class="interactions-content-stack">
+        <StackLayout>
+          <Label class="primary-heading" text="Herb / Supplement / Food"></Label>
+          <RadAutoCompleteTextView (suggestionViewBecameVisible)="onSuggestionViewBecameVisible($event)" (textChanged)="onTextChanged($event)" [items]="herbSuggestions" class="primary-input interactions-input"
+                                   displayMode="Plain" hint="Type here..."
+                                   name="herbField" ngDefaultControl suggestMode="Suggest"
+                                   width="100%">
+            <SuggestionView class="suggestion-view" suggestionViewHeight="{{suggestionViewHeight}}"
+                            tkAutoCompleteSuggestionView>
+              <ng-template let-item="item" tkSuggestionItemTemplate>
+                <StackLayout orientation="vertical" padding="10">
+                  <Label [text]="item.text" class="suggest-label"></Label>
+                </StackLayout>
+              </ng-template>
+            </SuggestionView>
+          </RadAutoCompleteTextView>
+        </StackLayout>
+
+        <StackLayout>
+          <Label class="primary-heading" text="Drug"></Label>
+          <RadAutoCompleteTextView (suggestionViewBecameVisible)="onSuggestionViewBecameVisible($event)" (textChanged)="onTextChanged($event)" [items]="drugSuggestions" class="primary-input interactions-input"
+                                   displayMode="Plain" hint="Type here..." name="drugField"
+                                   ngDefaultControl suggestMode="Suggest"
+                                   width="100%">
+            <SuggestionView class="suggestion-view" suggestionViewHeight="{{suggestionViewHeight}}"
+                            tkAutoCompleteSuggestionView>
+              <ng-template let-item="item" tkSuggestionItemTemplate>
+                <StackLayout orientation="vertical" padding="10">
+                  <Label [text]="item.text" class="suggest-label"></Label>
+                </StackLayout>
+              </ng-template>
+            </SuggestionView>
+          </RadAutoCompleteTextView>
+        </StackLayout>
+
+        <StackLayout>
+          <Label class="primary-heading" text="Drug Class"></Label>
+          <RadAutoCompleteTextView (suggestionViewBecameVisible)="onSuggestionViewBecameVisible($event)" (textChanged)="onTextChanged($event)" [items]="classSuggestions" class="primary-input interactions-input"
+                                   displayMode="Plain" hint="Type here..."
+                                   name="drugClassField" ngDefaultControl suggestMode="Suggest"
+                                   width="100%">
+            <SuggestionView class="suggestion-view" suggestionViewHeight="{{suggestionViewHeight}}"
+                            tkAutoCompleteSuggestionView>
+              <ng-template let-item="item" tkSuggestionItemTemplate>
+                <StackLayout orientation="vertical" padding="10">
+                  <Label [text]="item.text" class="suggest-label"></Label>
+                </StackLayout>
+              </ng-template>
+            </SuggestionView>
+          </RadAutoCompleteTextView>
+        </StackLayout>
+      </StackLayout>
+
+      <StackLayout paddingBottom="10">
+        <Button (tap)="onTapInteractions()"
+                [class]="{'primary-buttons': true, 'primary-buttons-disabled': (herbSupplementFood.length <= 0)}"
+                text="Show Interactions"></Button>
+      </StackLayout>
+    </FlexboxLayout>
+  </ScrollView>
+</DockLayout>

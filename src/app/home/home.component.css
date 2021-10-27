@@ -1,0 +1,22 @@
+.main-content {
+  flex-direction: column;
+  margin-top: 10%;
+}
+
+.greetings-layout {
+  text-align: center;
+  padding: 20 0;
+}
+
+.greeting-text {
+  font-size: 25;
+}
+
+.welcome-text {
+  font-size: 30;
+  font-weight: 600;
+}
+
+.search-home-button, .interactions-home-button {
+  margin: 10 0;
+}

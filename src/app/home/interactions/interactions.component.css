@@ -1,0 +1,32 @@
+.interactions-root-flexbox {
+  padding: 20 10 0 10;
+}
+
+.interactions-content-stack {
+  padding: 0 0 50 0;
+}
+
+.interactions-required-input {
+  margin: 10 0 5 0;
+}
+
+.interactions-input {
+  margin: 10 0 15 0;
+}
+
+.interactions-scan-button {
+  margin-bottom: 15;
+}
+
+.suggestion-view {
+  background-color: #f9f7f7;
+  border-width: 2;
+  border-bottom-color: #3b383b;
+  border-color: #3b383b;
+  border-radius: 6;
+  font-size: 20;
+}
+
+.suggest-label {
+  text-transform: capitalize;
+}

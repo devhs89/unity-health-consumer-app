@@ -1,0 +1,66 @@
+.chat-bot-root-flexbox {
+  font-size: 20;
+}
+
+.chat-bot-close-absolute {
+  margin-top: 1%;
+  margin-left: 69%;
+}
+
+.chat-bot-close-button {
+  width: 120;
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 20;
+  border-radius: 50;
+}
+
+.message-bot-flexbox {
+  width: 90%;
+  margin: 10 2 10 auto;
+  padding: 10 15;
+  background-color: #e5e5e5;
+  border-radius: 10;
+  font-size: 18;
+  align-self: flex-end;
+}
+
+.message-client-flexbox {
+  width: 90%;
+  margin: 10 auto 10 2;
+  padding: 10 15;
+  background-color: #e5e5e5;
+  border-radius: 10;
+  font-size: 18;
+  align-self: flex-start;
+}
+
+.chat-bot-input-grid {
+  margin: 5 10;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.chat-bot-text-view {
+  width: 100%;
+  font-size: 20;
+  background-color: #ffffff;
+  border-bottom-width: 0;
+  border-width: 1.5;
+  border-color: dodgerblue;
+  border-radius: 10;
+}
+
+.chat-bot-send-button-flexbox {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.chat-bot-send-button {
+  margin: 0 0 0 10;
+  font-size: 20;
+  background-color: dodgerblue;
+  color: #ffffff;
+  border-radius: 50;
+}

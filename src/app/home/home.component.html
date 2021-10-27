@@ -1,0 +1,23 @@
+<ActionBar class="action-bar" title="UnityHealth"></ActionBar>
+
+<DockLayout stretchLastChild="true">
+  <FlexboxLayout dock="bottom" flexDirection="column">
+    <GridLayout columns="*, *" rows="auto">
+      <StackLayout col="1" padding="0 15 10 15" row="0">
+        <Button class="nav-button" nsRouterLink="/chat-bot" text="Chat"></Button>
+      </StackLayout>
+    </GridLayout>
+  </FlexboxLayout>
+  <FlexboxLayout class="main-content">
+    <StackLayout class="greetings-layout">
+      <Label class="greeting-text" text="{{greeting}}"></Label>
+      <Label class="welcome-text" text="Welcome to UnityHealth"></Label>
+    </StackLayout>
+    <StackLayout>
+      <Button class="primary-buttons primary-buttons-enabled search-home-button" nsRouterLink="/search"
+              text="Search Product"></Button>
+      <Button class="primary-buttons primary-buttons-enabled interactions-home-button" nsRouterLink="/interactions"
+              text="Interactions"></Button>
+    </StackLayout>
+  </FlexboxLayout>
+</DockLayout>

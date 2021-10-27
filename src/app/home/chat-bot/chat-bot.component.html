@@ -1,0 +1,40 @@
+<ActionBar class="action-bar" title="UnityHealth"></ActionBar>
+
+<GridLayout columns="*" rows="*, auto">
+  <FlexboxLayout col="0" row="0">
+    <ScrollView class="page" orientation="vertical">
+      <FlexboxLayout flexDirection="column-reverse">
+        <FlexboxLayout *ngFor="let msg of conversation" flexDirection="column" width="100%">
+          <StackLayout *ngIf="msg.actor === 'BOT'; else client" class="message-bot-flexbox">
+            <Label style="font-size: 18" textWrap="true">
+              <FormattedString>
+                <Span color="#000000" fontWeight="bold" text="{{msg.actor}}: "></Span>
+                <Span text="{{msg.response}}"></Span>
+              </FormattedString>
+            </Label>
+          </StackLayout>
+          <ng-template #client>
+            <StackLayout class="message-client-flexbox">
+              <Label style="font-size: 18" textWrap="true">
+                <FormattedString>
+                  <Span color="dodgerblue" fontWeight="bold" text="{{msg.actor}}: "></Span>
+                  <Span text="{{msg.response}}"></Span>
+                </FormattedString>
+              </Label>
+            </StackLayout>
+          </ng-template>
+        </FlexboxLayout>
+      </FlexboxLayout>
+    </ScrollView>
+  </FlexboxLayout>
+  <GridLayout class="chat-bot-input-grid" col="0" columns="*, auto" row="1" rows="auto">
+    <TextView [(ngModel)]="textBox" class="chat-bot-text-view" col="0" hint="Type here..." row="1"></TextView>
+    <FlexboxLayout class="chat-bot-send-button-flexbox" col="1" row="0">
+      <Button (tap)="onTapSendHandler()" class="chat-bot-send-button" text="Send"></Button>
+    </FlexboxLayout>
+  </GridLayout>
+</GridLayout>
+
+<AbsoluteLayout class="chat-bot-close-absolute">
+  <Button (tap)="onCloseHandler()" class="chat-bot-close-button" text="close"></Button>
+</AbsoluteLayout>

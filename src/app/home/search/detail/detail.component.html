@@ -1,0 +1,98 @@
+<ActionBar class="action-bar" title="Product Details"></ActionBar>
+
+<DockLayout stretchLastChild="true">
+  <FlexboxLayout class="border-bottom-shadow" dock="top" flexDirection="column"
+                 padding="10 7">
+    <Label class="primary-heading" style="text-transform: capitalize"
+           text="{{productDetails && productDetails.product ? productDetails.product : (isLoading ? 'Loading...': 'No product found') }}"
+           textWrap="true"></Label>
+    <StackLayout *ngIf="productDetails && productDetails.brand" padding="10 0 5 0">
+      <Label class="primary-subheading" text="Brand: {{productDetails.brand}}"
+             textWrap="true"></Label>
+    </StackLayout>
+  </FlexboxLayout>
+  <FlexboxLayout dock="bottom" flexDirection="column">
+    <GridLayout columns="*, auto" rows="auto">
+      <StackLayout col="0" padding="0 15 10 15" row="0">
+        <Button class="nav-button" nsRouterLink="/" text="Home"></Button>
+      </StackLayout>
+      <StackLayout col="1" padding="0 15 10 15" row="0">
+        <Button class="nav-button" nsRouterLink="/interactions" text="Interactions"></Button>
+      </StackLayout>
+    </GridLayout>
+  </FlexboxLayout>
+  <FlexboxLayout flexDirection="column">
+    <ScrollView *ngIf="productDetails && productDetails.product; else noResult" orientation="vertical">
+      <FlexboxLayout class="results-flexbox" flexDirection="column">
+        <Label class="primary-subheading" text="Product Details" textWrap="true"></Label>
+        <StackLayout>
+          <Label *ngIf="productDetails['quantity']" textWrap="true">
+            <FormattedString>
+              <Span fontWeight="bold" text="Size: "></Span>
+              <Span text="{{productDetails['quantity']}}"></Span>
+            </FormattedString>
+          </Label>
+          <Label *ngIf="productDetails['indication']" textWrap="true">
+            <FormattedString>
+              <Span fontWeight="bold" text="Claim: "></Span>
+              <Span text="{{productDetails['indication']}}"></Span>
+            </FormattedString>
+          </Label>
+          <Label *ngIf="productDetails['description']" textWrap="true">
+            <FormattedString>
+              <Span fontWeight="bold" text="Description: "></Span>
+              <Span text="{{productDetails['description']}}"></Span>
+            </FormattedString>
+          </Label>
+          <Label *ngIf="productDetails['warning']" textWrap="true">
+            <FormattedString>
+              <Span fontWeight="bold" text="Warnings: "></Span>
+              <Span text="{{productDetails['warning']}}"></Span>
+            </FormattedString>
+          </Label>
+          <StackLayout *ngIf="productDetails['ingredients']" paddingBottom="5">
+            <Label style="font-weight: bold" text="Ingredients:"></Label>
+            <GridLayout *ngFor="let ingredient of productDetails['ingredients']" class="result-card ingredient-flexbox"
+                        columns="* auto"
+                        rows="auto">
+              <Label col="0" row="0" textWrap="true">
+                <FormattedString>
+                  <Span text="{{ingredient.name}}"></Span>
+                </FormattedString>
+              </Label>
+              <Label col="1" row="0" textWrap="true">
+                <FormattedString>
+                  <Span text="{{ingredient.quantity}}"></Span>
+                </FormattedString>
+              </Label>
+            </GridLayout>
+          </StackLayout>
+          <Label *ngIf="productDetails['directions']" textWrap="true">
+            <FormattedString>
+              <Span fontWeight="bold" text="Directions: "></Span>
+              <Span text="{{productDetails['directions']}}"></Span>
+            </FormattedString>
+          </Label>
+          <Label *ngIf="productDetails['storage']" textWrap="true">
+            <FormattedString>
+              <Span fontWeight="bold" text="Storage: "></Span>
+              <Span text="{{productDetails['storage']}}"></Span>
+            </FormattedString>
+          </Label>
+        </StackLayout>
+      </FlexboxLayout>
+    </ScrollView>
+    <ng-template #noResult>
+      <FlexboxLayout class="no-results-flexbox">
+        <Label class="primary-heading" text="No Product Found."></Label>
+      </FlexboxLayout>
+    </ng-template>
+  </FlexboxLayout>
+</DockLayout>
+
+<AbsoluteLayout>
+  <FlexboxLayout alignContent="center" flexDirection="row" flexGrow="1" height="100%" justifyContent="center"
+                 width="100%">
+    <ActivityIndicator [busy]="isLoading"></ActivityIndicator>
+  </FlexboxLayout>
+</AbsoluteLayout>

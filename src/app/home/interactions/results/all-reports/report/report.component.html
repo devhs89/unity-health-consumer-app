@@ -1,0 +1,108 @@
+<ActionBar class="action-bar" title="Report"></ActionBar>
+
+<DockLayout stretchLastChild="true">
+  <FlexboxLayout class="border-bottom-shadow" dock="top" padding="10 7">
+    <Label class="primary-heading" text="Full Report"></Label>
+  </FlexboxLayout>
+  <FlexboxLayout dock="bottom" flexDirection="column">
+    <GridLayout columns="*, *" rows="auto">
+      <StackLayout col="0" padding="0 15 10 15" row="0">
+        <Button class="nav-button" nsRouterLink="/" text="Home"></Button>
+      </StackLayout>
+      <StackLayout col="1" padding="0 15 10 15" row="0">
+        <Button class="nav-button" nsRouterLink="/search" text="Search"></Button>
+      </StackLayout>
+    </GridLayout>
+  </FlexboxLayout>
+  <FlexboxLayout class="report-flexbox" flexDirection="column">
+    <ScrollView *ngIf="report; else noResult" orientation="vertical">
+      <FlexboxLayout flexDirection="column" padding="5 0">
+        <Label *ngIf="report.id" style="font-weight: 600; padding-bottom: 5;" text="Report #{{report.id}}"
+               textWrap="true"></Label>
+        <Label *ngIf="report.title" textWrap="true">
+          <FormattedString>
+            <Span fontWeight="bold" text="Title:&#xa;"></Span>
+            <Span text="{{report.title}}"></Span>
+          </FormattedString>
+        </Label>
+        <Label *ngIf="report.studyAim" textWrap="true">
+          <FormattedString>
+            <Span fontWeight="bold" text="Study Aim:&#xa;"></Span>
+            <Span text="{{report.studyAim}}"></Span>
+          </FormattedString>
+        </Label>
+        <Label *ngIf="report.studyDesign" textWrap="true">
+          <FormattedString>
+            <Span fontWeight="bold" text="Study Design:&#xa;"></Span>
+            <Span text="{{report.studyDesign}}"></Span>
+          </FormattedString>
+        </Label>
+        <Label *ngIf="report.commentsOnEvidence" textWrap="true">
+          <FormattedString>
+            <Span fontWeight="bold" text="Comments On Evidence:&#xa;"></Span>
+            <Span text="{{report.commentsOnEvidence}}"></Span>
+          </FormattedString>
+        </Label>
+        <Label *ngIf="report.results" textWrap="true">
+          <FormattedString>
+            <Span fontWeight="bold" text="Results:&#xa;"></Span>
+            <Span text="{{report.results}}"></Span>
+          </FormattedString>
+        </Label>
+        <Label *ngIf="report.discussion" textWrap="true">
+          <FormattedString>
+            <Span fontWeight="bold" text="Discussion:&#xa;"></Span>
+            <Span text="{{report.discussion}}"></Span>
+          </FormattedString>
+        </Label>
+        <Label *ngIf="report.implication" textWrap="true">
+          <FormattedString>
+            <Span fontWeight="bold" text="Implication:&#xa;"></Span>
+            <Span text="{{report.implication}}"></Span>
+          </FormattedString>
+        </Label>
+        <Label *ngIf="report.assayMethods" textWrap="true">
+          <FormattedString>
+            <Span fontWeight="bold" text="Assay Methods:&#xa;"></Span>
+            <Span text="{{report.assayMethods}}"></Span>
+          </FormattedString>
+        </Label>
+        <Label *ngIf="report.pharmacokineticMethods" textWrap="true">
+          <FormattedString>
+            <Span fontWeight="bold" text="Pharmacokinetic Methods:&#xa;"></Span>
+            <Span text="{{report.pharmacokineticMethods}}"></Span>
+          </FormattedString>
+        </Label>
+        <Label *ngIf="report.statisticalMethods" textWrap="true">
+          <FormattedString>
+            <Span fontWeight="bold" text="Statistical Methods:&#xa;"></Span>
+            <Span text="{{report.statisticalMethods}}"></Span>
+          </FormattedString>
+        </Label>
+        <Label *ngIf="report.resultsDetails" textWrap="true">
+          <FormattedString>
+            <Span fontWeight="bold" text="Results Details:&#xa;"></Span>
+            <Span text="{{report.resultsDetails}}"></Span>
+          </FormattedString>
+        </Label>
+        <Label *ngIf="report.discussionDetails" textWrap="true">
+          <FormattedString>
+            <Span fontWeight="bold" text="Discussion Details:&#xa;"></Span>
+            <Span text="{{report.discussionDetails}}"></Span>
+          </FormattedString>
+        </Label>
+        <Label *ngIf="report.citation" textWrap="true">
+          <FormattedString>
+            <Span fontWeight="bold" text="Citation #{{report.citation.id}}&#xa;"></Span>
+            <Span text="{{report.citation.citation}}"></Span>
+          </FormattedString>
+        </Label>
+      </FlexboxLayout>
+    </ScrollView>
+    <ng-template #noResult>
+      <FlexboxLayout class="no-results-flexbox">
+        <Label class="primary-heading" text="No Reports Found."></Label>
+      </FlexboxLayout>
+    </ng-template>
+  </FlexboxLayout>
+</DockLayout>

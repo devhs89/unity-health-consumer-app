@@ -1,0 +1,42 @@
+<ActionBar class="action-bar" title="Search Product"></ActionBar>
+
+<DockLayout stretchLastChild="true">
+  <FlexboxLayout dock="bottom" flexDirection="column">
+    <GridLayout columns="*, *" rows="auto">
+      <StackLayout col="0" padding="0 15 10 15" row="0">
+        <Button class="nav-button" nsRouterLink="/" text="Home"></Button>
+      </StackLayout>
+      <StackLayout col="1" padding="0 15 10 15" row="0">
+        <Button (tap)="onTapChat()" class="nav-button" text="chat"></Button>
+      </StackLayout>
+    </GridLayout>
+  </FlexboxLayout>
+  <FlexboxLayout flexDirection="column">
+    <ScrollView class="page" orientation="vertical">
+      <FlexboxLayout class="search-root-flexbox" flexDirection="column">
+        <StackLayout class="content-stack">
+          <Label class="primary-heading" text="Product"></Label>
+          <TextField #searchModel="ngModel" [(ngModel)]="searchTextField"
+                     [class]="{'primary-input': true, 'search-input': true, 'primary-input-invalid': searchModel.touched && searchModel.invalid}"
+                     hint="Type or scan product..." required></TextField>
+          <Label [class]="{required: true,'invalid-required': searchModel.touched && searchModel.invalid}"
+                 text="* Required"></Label>
+          <Button (tap)="onScanBarcodeTap()" class="scan-button"
+                  text="Scan Barcode"></Button>
+        </StackLayout>
+        <StackLayout>
+          <Button (tap)="onTapSearchHandler()"
+                  [class]="{'primary-buttons': true, 'primary-buttons-disabled': searchModel.invalid, 'primary-buttons-enabled': !searchModel.invalid}"
+                  text="Search"></Button>
+        </StackLayout>
+      </FlexboxLayout>
+    </ScrollView>
+  </FlexboxLayout>
+</DockLayout>
+
+<AbsoluteLayout>
+  <FlexboxLayout alignContent="center" flexDirection="row" flexGrow="1" height="100%" justifyContent="center"
+                 width="100%">
+    <ActivityIndicator [busy]="isLoading"></ActivityIndicator>
+  </FlexboxLayout>
+</AbsoluteLayout>

@@ -1,0 +1,38 @@
+<ActionBar class="action-bar" title="All Reports"></ActionBar>
+
+<DockLayout stretchLastChild="true">
+  <FlexboxLayout class="border-bottom-shadow" dock="top" flexDirection="column" padding="10 8">
+    <Label class="primary-heading"
+           text="{{herbSupplementFood}}{{drug && ' & ' + drug}}{{drugClass && ' & ' + drugClass}}"></Label>
+  </FlexboxLayout>
+  <FlexboxLayout dock="bottom" flexDirection="column">
+    <GridLayout columns="*, *" rows="auto">
+      <StackLayout col="0" padding="0 15 10 15" row="0">
+        <Button class="nav-button" nsRouterLink="/" text="Home"></Button>
+      </StackLayout>
+      <StackLayout col="1" padding="0 15 10 15" row="0">
+        <Button class="nav-button" nsRouterLink="/search" text="Search"></Button>
+      </StackLayout>
+    </GridLayout>
+  </FlexboxLayout>
+  <FlexboxLayout class="reports-flexbox" flexDirection="column">
+    <ScrollView *ngIf="allReports && allReports.length > 0; else noResult" orientation="vertical">
+      <FlexboxLayout flexDirection="column" padding="5 0">
+        <StackLayout padding="7 0 5 0">
+          <Label class="primary-subheading" text="* Tap on a report to view more details."
+                 textWrap="true"></Label>
+        </StackLayout>
+        <StackLayout (tap)="onTapResult(report.id)" *ngFor="let report of allReports; let i = index"
+                     class="result-card report-card">
+          <Label *ngIf="report.id" style="font-weight: 600" text="Report #{{i}}" textWrap="true"></Label>
+          <Label *ngIf="report.title" text="{{report.title}}" textWrap="true"></Label>
+        </StackLayout>
+      </FlexboxLayout>
+    </ScrollView>
+    <ng-template #noResult>
+      <FlexboxLayout class="no-results-flexbox">
+        <Label class="primary-heading" text="No Reports Found."></Label>
+      </FlexboxLayout>
+    </ng-template>
+  </FlexboxLayout>
+</DockLayout>

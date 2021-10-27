@@ -1,0 +1,42 @@
+.results-flexbox {
+  padding: 0 8 7 8;
+}
+
+.bgRed-legend, .bgAmber-legend, .bgBlue-legend, .bgGreen-legend {
+  padding: 5 10;
+  border-radius: 6;
+  text-align: center;
+  font-weight: 500;
+}
+
+.bgRed-legend {
+  background-color: #f9836d;
+}
+
+.bgAmber-legend {
+  background-color: #f9c367;
+}
+
+.bgBlue-legend {
+  background-color: skyblue;
+}
+
+.bgGreen-legend {
+  background-color: lightgreen;
+}
+
+.bgRed {
+  background-color: #f9836d;
+}
+
+.bgAmber {
+  background-color: #f9c367;
+}
+
+.bgBlue {
+  background-color: skyblue;
+}
+
+.bgGreen {
+  background-color: lightgreen;
+}
