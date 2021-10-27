@@ -7,7 +7,7 @@ import {Http} from "@nativescript/core";
 })
 export class ImGatewayService implements OnInit {
   appSettings = require("@nativescript/core/application-settings");
-  private token = "Cg0s7xuavsTvKEuvEB10ge4nm/3be3qLxGBxfqSM5iE=";
+  private token = "insert imgateway token here";
   private herbNames = [];
   private drugNames = [];
   private drugClasses = [];
@@ -30,17 +30,16 @@ export class ImGatewayService implements OnInit {
 
   getProduct(productName) {
     return Http.request({
-      url: "http://13.238.230.40:5001/search?productName=" + productName,
+      // TODO - Create end-point to search via product name
+      url: "http://testexample.imgateway.net/search?productName=" + productName,
       method: "POST"
     });
   }
 
   getInteractionsByIngredientName(herbName) {
     return Http.request({
-      // url: "http://testexample.imgateway.net/api/v1/ingredients/ingredientNames/" + herbName + "/2233",
-      url: "http://13.238.230.40:5001/ingredients?ingredientName=" + herbName,
-      // method: "GET",
-      method: "POST",
+      url: "http://testexample.imgateway.net/api/v1/ingredients/ingredientNames/" + herbName + "/2233",
+      method: "GET",
       headers: {
         "X-Auth-Token": this.token
       }

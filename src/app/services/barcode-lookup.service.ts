@@ -6,7 +6,7 @@ import {Http} from "@nativescript/core";
   providedIn: 'root'
 })
 export class BarcodeLookupService {
-  private upcDatabaseKey = '098f6bc22621d_demo_4de4e8326b4f6';
+  private upcDatabaseKey = 'insert barcode token here';
   private barcodeScanner = new BarcodeScanner();
 
   constructor() {

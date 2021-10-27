@@ -14,7 +14,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     const dateTime = new Date();
-    // const dateString = `${dateTime.getDate()}-${dateTime.getMonth()}-${dateTime.getFullYear()}`;
     let time = dateTime.getHours();
 
     if (time >= 1 && time < 12) {
@@ -22,9 +21,5 @@ export class HomeComponent implements OnInit {
     } else {
       this.greeting = 'Good Evening';
     }
-
-    // if (!getString("autoCompleteLastUpdated") || getString("autoCompleteLastUpdated") !== dateString) {
-    //   // this.imGatewayService.updateLocalStorage();
-    // }
   }
 }
