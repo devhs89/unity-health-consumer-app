@@ -17,5 +17,6 @@ A team of four student developers built this application and implemented the req
 1. Follow the instruction in the link below to set up the NativeScript development environment.
 *https://docs.nativescript.org/environment-setup.html*
 2. Run **ns doctor [android/ios]** to verify all dependencies are met.
-3. Run **ns run [android/ios]** to run in normal mode.
-4. Run **ns debug [android/ios]** to run in debug mode.
+3. Run **npm install** in the project's root directory.
+4. Run **ns run [android/ios]** to run in normal mode.
+5. Run **ns debug [android/ios]** to run in debug mode.
