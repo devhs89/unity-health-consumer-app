@@ -7,11 +7,12 @@ A team of four student developers built this application and implemented the req
 - Interactions feature lets users view herb, drug, food and supplement interactions.
 - AI ChatBot feature resolves customers’ basic & medical queries.
 
-1. *This repository includes code for the user-interface, barcode scanner and interactions functionality only.*
-2. *To view ChatBot functionality, go to -*
-3. *The application uses a free barcode lookup database API, that only provide limited results.*
-4. *Authentication tokens for barcode lookup service and IMgateway service have been removed from the source code. New tokens can be acquired by signing up to these services.*
-5. *To rectify a technical error with a database, a local database was set up and some API calls will have to be updated.*
+**This repository includes code for the user-interface, barcode scanner and interactions functionality only. To view ChatBot feature, go to - https://github.com/devhs89/unity-health-chatbot**
+
+*Please note:*
+1. *The application uses a free barcode lookup database API, that only provide limited results.*
+2. *Authentication tokens for barcode lookup service and IMgateway service have been removed from the source code. New tokens can be acquired by signing up to these services.*
+3. *To rectify a technical error with a database, a local database was set up and some API calls will have to be updated.*
 
 ## How to run the application -
 1. Follow the instruction in the link below to set up the NativeScript development environment.
